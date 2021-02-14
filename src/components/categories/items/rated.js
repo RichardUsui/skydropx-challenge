@@ -15,13 +15,25 @@ class Items extends Component {
   }
 
   componentDidMount() {
-    this.props.getListBestRated();
+    this.props.getListBestRated(this.props.match.params.page <= 500 && this.props.match.params.page > 0 ? this.props.match.params.page : 1 );
   }
 
   handleSelect = (obj) => {
     this.setState({
         rated: obj
     })
+  }
+
+  nextPage = () => {
+    const newPage = parseInt(this.props.match.params.page)+1
+    const url = '/mejor-valorados/page/'+newPage.toString()
+    window.location.href = url;
+  }
+
+  previewPage = () => {
+    const newPage = parseInt(this.props.match.params.page) == 1 ? parseInt(this.props.match.params.page) : parseInt(this.props.match.params.page)-1
+    const url = '/mejor-valorados/page/'+newPage.toString()
+    window.location.href = url;
   }
 
   render(){ 
@@ -36,6 +48,18 @@ class Items extends Component {
             <Content
                 items={rated}
             />
+            <div className='div-pagination'>
+                <button
+                  onClick={this.previewPage}
+                  className='blog-post__button-2'>
+                   Anterior
+                </button>
+                <button
+                  onClick={this.nextPage}
+                  className='blog-post__button-2'>
+                  Siguiente
+                </button>
+            </div>
           </div>
         )
   }

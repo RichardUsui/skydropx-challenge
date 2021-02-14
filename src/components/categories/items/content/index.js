@@ -10,7 +10,7 @@ function itemsRender(items){
             <div className='card' key={item.id}>
               <img className='img-poster' src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt={item.name}/>
               <h4> { item.name } </h4>
-              <p> { item.vote_average } </p>
+              <p> {setStars(item.vote_average)} { item.vote_average } </p>
               <img className='img-favorite' src={require(`../../../../images/${itemFavorite(item.id)}.png`)} alt='favorite' />
               <Link className='blog-post__button' to={`/detalle/${item.id}`}>
                   Ver detalle
@@ -20,10 +20,76 @@ function itemsRender(items){
         </div>
       )
     }else{
-      return(
-        <center><SyncLoader /></center>
-      )
+        return (<center className='posLoading'><SyncLoader /></center>)
     }  
+}
+
+function setStars(lenght){
+  var llena = []
+  var media = []
+  var vacia = []
+    if(lenght === 10){
+      llena = [1,2,3,4,5]
+    }
+    
+    if(lenght >= 8){
+      llena = [1,2,3,4]
+      if(lenght >= 9)
+        media = [1]
+      else
+        vacia = [1]
+    }
+    if(lenght < 8 && lenght > 6){
+      llena = [1,2,3]
+      if(lenght >= 7){
+        media = [1]
+        vacia = [1]
+      }
+       else{
+         vacia = [1,2]
+       }
+    }
+    if(lenght <= 6 && lenght > 4){
+      llena = [1,2]
+      if(lenght >= 5){
+        media = [1]
+        vacia = [1,2]
+      }
+       else{
+         vacia = [1,2,3]
+       }
+    }
+    if(lenght <= 4 && lenght > 2){
+      llena = [1]
+      if(lenght >= 3){
+        media = [1]
+        vacia = [1,2,3]
+      }
+       else{
+         vacia = [1,2,3,4]
+       }
+    }
+
+  
+  return(
+      <div>
+      {llena.map(index => (
+        <span key={index}>
+          <img src={require('../../../../images/estrella_llena.png')} alt='star' />
+        </span>
+      ))}
+      {media.map( index => (
+        <span key={index}>
+          <img src={require('../../../../images/estrella_media.png')} alt='star' />
+        </span>
+      ))}
+      {vacia.map(index => (
+        <span key={index}>
+          <img src={require('../../../../images/estrella_vacia.png')} alt='star' />
+        </span>
+      ))}
+      </div>
+  )
 }
 
 function itemFavorite (id){

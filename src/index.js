@@ -6,7 +6,7 @@ import store from './redux/store';
 import Navbar from './components/navbar';
 import Popular from './components/categories/items/popular';
 import Rated from './components/categories/items/rated';
-import Emite from './components/categories/items/emite';
+import Trend from './components/categories/items/trend';
 import Detail from './components/categories/detailShow';
 import './App.css';
 
@@ -15,11 +15,11 @@ const Root = (
         <Router>
             <Navbar />
             <Switch>
-                <Route path='/popular' component={Popular} />
-                <Route path='/mejor-valorados' component={Rated} />
-                <Route path='/emiten-hoy' component={Emite} />
+                <Route path='/popular/page/:page' component={Popular} />
+                <Route path='/mejor-valorados/page/:page' component={Rated} />
+                <Route path='/tendencia/page/:page' component={Trend} />
                 <Route path='/detalle/:id' component={Detail} />
-                <Redirect from="/" to="/popular" />
+                <Redirect from="/" to="/popular/page/1" />
             </Switch>
         </Router>
     </Provider>

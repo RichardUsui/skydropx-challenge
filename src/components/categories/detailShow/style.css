@@ -1,5 +1,5 @@
 .container-detalle{
-    height: 110vh;
+    /* height: 110vh; */
     display: flow-root;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@
     background-color: #fff;
     box-sizing: 0 1.4rem 8rem rgba(0,0,0,0.2);
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     border-radius: 0.8rem;
     margin-top: 1rem;
 }
@@ -37,7 +37,7 @@
 
 .blog-post__img-favorite{
     margin-left: 45rem;
-    transform: translateY(-35px);
+    transform: translateY(-54px);
     cursor: pointer;
 }
 
@@ -54,6 +54,11 @@
 
 .blog-post__gen{
     padding: 1rem 0 1rem 0;
+}
+
+.blog-post__gen .span{
+    font-size: 0.83em;
+    font-weight: bold;
 }
 
 .blog-post__title{
@@ -97,6 +102,12 @@
     border: none;
     cursor: pointer;
     transform: translateX(-15px);
+}
+
+.div-pagination{
+    justify-content: center;
+    display: flex;
+    transform: translateY(2150px);
 }
 
 @media screen and (max-width: 1068px){

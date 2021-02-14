@@ -2,11 +2,11 @@ export const FETCH_ITEMS_REQUEST = 'FETCH_ITEMS_REQUEST'
 export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS'
 export const FETCH_ITEMS_ERROR = 'FETCH_ITEMS_ERROR'
 
-export const getListPopular = () => (dispatch) => {
+export const getListPopular = (page) => (dispatch) => {
     
     dispatch({  type: FETCH_ITEMS_REQUEST })
 
-    fetch('https://api.themoviedb.org/3/tv/popular?api_key=ef24bfede774ea0bb15a1a6a322444fc')
+    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=ef24bfede774ea0bb15a1a6a322444fc&page=${page}`)
     .then(res => res.json())
     .then(items => {
         dispatch({

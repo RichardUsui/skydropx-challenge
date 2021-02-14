@@ -29,7 +29,7 @@ class Order extends Component {
   }
 
   render () {
-    const { handleOrder } = this.props
+    // const { handleOrder } = this.props
     return (
         <div className="divOrder">
             <h4>Ordenar resultados por</h4>

@@ -1,22 +1,22 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import popular from './reducers/popular'
 import rated from './reducers/rated'
-import emite from './reducers/emite'
+import trend from './reducers/trend'
 import itemSelected from './reducers/itemSelected'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
     popular,
     rated,
-    emite,
+    trend,
     itemSelected
 })
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
     reducer, 
-    composeEnhancers(
+    // composeEnhancers(
         applyMiddleware(thunk)
-    )
+    // )
 )
 
 export default store

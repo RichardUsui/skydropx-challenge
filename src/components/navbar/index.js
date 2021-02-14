@@ -15,14 +15,14 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to='/popular'>
-            Popular
+          <NavLink to='/popular/page/1'>
+            Populares
           </NavLink>
-          <NavLink to='/mejor-valorados'>
+          <NavLink to='/mejor-valorados/page/1'>
             Mejor valorados
           </NavLink>
-          <NavLink to='/emiten-hoy'>
-            Se emiten hoy
+          <NavLink to='/tendencia/page/1'>
+            En tendencia
           </NavLink>
         </NavMenu>
       </Nav>
